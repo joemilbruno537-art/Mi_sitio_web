@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-font - Mantenimiento, Restauración y Desarrollo Web</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES DE DISEÑO --- */
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --whatsapp-green: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER & NAVEGACIÓN --- */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 5% 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tagline {
+            background: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        /* --- SECCIÓN DE SERVICIOS --- */
+        .services-container {
+            max-width: 1200px;
+            margin: -3rem auto 4rem;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: #eff6ff;
+            color: var(--accent-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- SECCIÓN TÉCNICA / CONTACTO --- */
+        .contact-section {
+            background-color: white;
+            padding: 4rem 5%;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .contact-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            color: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-card h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .phone-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin: 1.5rem 0;
+            letter-spacing: 2px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+            transform: scale(1.05);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .phone-number { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Branding -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-gem"></i> Rescate Digital <span>.</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tagline">Soluciones Informáticas Integrales</span>
+            <h1>Mantenimiento, Restauración y Desarrollo Web</h1>
+            <p>Optimizamos tu equipamiento tecnológico y creamos tu presencia digital. Desde soporte técnico profesional hasta sitios web publicitarios y tarjetas de presentación digitales.</p>
+        </div>
+    </section>
+
+    <!-- Catálogo de Servicios -->
+    <section class="services-container">
+        <div class="services-grid">
+
+            <!-- Servicio: Venta de Sitios Web / Publicidad -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3>Venta de Sitios Web y Tarjetas Digitales</h3>
+                <p>Diseño y creación de páginas web para publicidad, landing pages atractivas y tarjetas de presentación digitales para potenciar la imagen de tu negocio o marca personal.</p>
+            </div>
+            
+            <!-- Servicio: Mantenimiento Técnico -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-wrench"></i>
+                </div>
+                <h3>Mantenimiento Técnico</h3>
+                <p>Preventivo y correctivo. Limpieza física interna, cambio de pasta térmica y optimización del sistema para prevenir sobrecalentamientos y fallas.</p>
+            </div>
+
+            <!-- Servicio: Restauración de Sistema -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-rotate"></i>
+                </div>
+                <h3>Restauración de Sistema</h3>
+                <p>Recuperación de equipos lentos, formateo limpio, configuración desde cero y eliminación de errores críticos del sistema operativo.</p>
+            </div>
+
+            <!-- Servicio: Respaldos Seguros -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                </div>
+                <h3>Respaldos Seguros</h3>
+                <p>Protección y migración de tus archivos importantes, fotos y documentos. Respaldos preventivos antes de cualquier intervención.</p>
+            </div>
+
+            <!-- Servicio: Paquetería Office -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-file-word"></i>
+                </div>
+                <h3>Paquetería Office</h3>
+                <p>Instalación y activación de la suite de Microsoft Office (Word, Excel, PowerPoint) lista para trabajar o estudiar sin interrupciones.</p>
+            </div>
+
+            <!-- Servicio: Instalación de Antivirus -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-shield-virus"></i>
+                </div>
+                <h3>Instalación de Antivirus</h3>
+                <p>Protección contra virus, malware y software espía. Limpieza profunda y blindaje para tu navegación segura en internet.</p>
+            </div>
+
+            <!-- Servicio: Paquetería Adobe / Illustrator -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <h3>Paquetería Adobe / Illustrator</h3>
+                <p>Instalación de software especializado para diseño y creación como Adobe Illustrator y programas creativos totalmente configurados.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contacto / Llamado a la acción -->
+    <section class="contact-section">
+        <div class="contact-card">
+            <div class="tech-badge">
+                <i class="fa-solid fa-user-gear"></i> Atención Personalizada
+            </div>
+            <h2>Atención Directa con el Especialista</h2>
+            <p>¿Tienes dudas o necesitas una cotización rápida? Escríbeme y agendamos una revisión.</p>
+            
+            <div class="phone-number">
+                33 2947 4533
+            </div>
+            <p style="margin-bottom: 1.5rem; color: #94a3b8;">Atendido por: <strong>Téc. Joemil Bruno</strong></p>
+
+            <a href="https://wa.me/523329474533?text=Hola%20T%C3%A9c.%20Joemil%20Bruno,%20requiero%20informaci%C3%B3n%20sobre%20sus%20servicios" class="btn-whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i> Enviar WhatsApp Ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Runestone - Mantenimiento y Restauración. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
